@@ -874,7 +874,6 @@ status_t AudioFlinger::setMasterMute(bool muted)
         }
         mHardwareStatus = AUDIO_HW_IDLE;
     }
-#endif
 
     // Now set the master mute in each playback thread.  Playback threads
     // assigned to HALs which do not have master mute support will apply master
@@ -882,6 +881,7 @@ status_t AudioFlinger::setMasterMute(bool muted)
     // mute will simply ignore the setting.
     for (size_t i = 0; i < mPlaybackThreads.size(); i++)
         mPlaybackThreads.valueAt(i)->setMasterMute(muted);
+#endif
 
     return NO_ERROR;
 }
